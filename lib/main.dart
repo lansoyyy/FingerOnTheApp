@@ -20,7 +20,7 @@ class FingerOnTheApp extends StatelessWidget {
         useMaterial3: true,
         fontFamily: 'Regular',
       ),
-      home: const SplashScreen(),
+      home: const SplashScreen(), // SplashScreen will navigate to LoginScreen
       debugShowCheckedModeBanner: false,
     );
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'get_started_screen.dart';
+import 'login_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -40,13 +41,13 @@ class _SplashScreenState extends State<SplashScreen>
 
     _animationController.forward();
 
-    // Navigate to home screen after 3 seconds
-    Future.delayed(const Duration(seconds: 5), () {
+    // Navigate to login screen after 3 seconds
+    Future.delayed(const Duration(seconds: 3), () {
       if (mounted) {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => const GetStartedScreen(),
+            builder: (context) => const LoginScreen(),
           ),
         );
       }
