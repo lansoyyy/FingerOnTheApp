@@ -18,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen>
   void initState() {
     super.initState();
     _animationController = AnimationController(
-      duration: const Duration(seconds: 2),
+      duration: const Duration(seconds: 5),
       vsync: this,
     );
 
@@ -41,7 +41,7 @@ class _SplashScreenState extends State<SplashScreen>
     _animationController.forward();
 
     // Navigate to home screen after 3 seconds
-    Future.delayed(const Duration(seconds: 3), () {
+    Future.delayed(const Duration(seconds: 5), () {
       if (mounted) {
         Navigator.pushReplacement(
           context,
@@ -76,78 +76,160 @@ class _SplashScreenState extends State<SplashScreen>
           ),
         ),
         child: SafeArea(
-          child: Center(
-            child: AnimatedBuilder(
-              animation: _animationController,
-              builder: (context, child) {
-                return FadeTransition(
-                  opacity: _fadeAnimation,
-                  child: ScaleTransition(
-                    scale: _scaleAnimation,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        // App Icon
-                        Container(
-                          width: 120,
-                          height: 120,
-                          decoration: BoxDecoration(
-                            color: Colors.white.withOpacity(0.2),
-                            shape: BoxShape.circle,
-                            border: Border.all(
-                              color: Colors.white.withOpacity(0.5),
-                              width: 3,
+          child: Stack(
+            children: [
+              // Decorative confetti/stars
+              Positioned(
+                top: 40,
+                left: 30,
+                child: Icon(Icons.star,
+                    color: Colors.yellowAccent.withOpacity(0.25), size: 38),
+              ),
+              Positioned(
+                top: 80,
+                right: 40,
+                child: Icon(Icons.celebration,
+                    color: Colors.purpleAccent.withOpacity(0.18), size: 44),
+              ),
+              Positioned(
+                bottom: 80,
+                left: 60,
+                child: Icon(Icons.auto_awesome,
+                    color: Colors.cyanAccent.withOpacity(0.18), size: 54),
+              ),
+              // Main splash content
+              Center(
+                child: AnimatedBuilder(
+                  animation: _animationController,
+                  builder: (context, child) {
+                    return FadeTransition(
+                      opacity: _fadeAnimation,
+                      child: ScaleTransition(
+                        scale: _scaleAnimation,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            // App Icon with glow
+                            Container(
+                              width: 130,
+                              height: 130,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                gradient: const RadialGradient(
+                                  colors: [
+                                    Color(0xFF00FFD0),
+                                    Color(0xFF0F3460)
+                                  ],
+                                  center: Alignment.center,
+                                  radius: 0.8,
+                                ),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.cyanAccent.withOpacity(0.5),
+                                    blurRadius: 30,
+                                    spreadRadius: 8,
+                                  ),
+                                ],
+                                border: Border.all(
+                                  color: Colors.white.withOpacity(0.7),
+                                  width: 4,
+                                ),
+                              ),
+                              child: const Center(
+                                child: Icon(
+                                  Icons.touch_app,
+                                  size: 70,
+                                  color: Colors.white,
+                                  shadows: [
+                                    Shadow(
+                                      color: Colors.cyanAccent,
+                                      blurRadius: 18,
+                                      offset: Offset(0, 0),
+                                    ),
+                                  ],
+                                ),
+                              ),
                             ),
-                          ),
-                          child: const Icon(
-                            Icons.touch_app,
-                            size: 60,
-                            color: Colors.white,
-                          ),
-                        ),
-                        const SizedBox(height: 30),
+                            const SizedBox(height: 32),
 
-                        // App Title
-                        const Text(
-                          'FINGER ON THE APP',
-                          style: TextStyle(
-                            fontSize: 28,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                            fontFamily: 'Bold',
-                            letterSpacing: 2,
-                          ),
-                        ),
-                        const SizedBox(height: 10),
-
-                        // Subtitle
-                        const Text(
-                          'The Ultimate Challenge',
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.white70,
-                            fontFamily: 'Medium',
-                          ),
-                        ),
-                        const SizedBox(height: 50),
-
-                        // Loading indicator
-                        Container(
-                          width: 40,
-                          height: 40,
-                          child: CircularProgressIndicator(
-                            valueColor: AlwaysStoppedAnimation<Color>(
-                              Colors.white.withOpacity(0.8),
+                            // App Title with badge
+                            const Text(
+                              'FINGER ON THE APP',
+                              style: TextStyle(
+                                fontSize: 30,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                                fontFamily: 'Bold',
+                                letterSpacing: 2,
+                                shadows: [
+                                  Shadow(
+                                    color: Colors.black26,
+                                    blurRadius: 10,
+                                    offset: Offset(0, 5),
+                                  ),
+                                ],
+                              ),
                             ),
-                            strokeWidth: 3,
-                          ),
+                            const SizedBox(height: 14),
+
+                            // Subtitle
+                            const Text(
+                              'The Ultimate Challenge',
+                              style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.white70,
+                                fontFamily: 'Medium',
+                                shadows: [
+                                  Shadow(
+                                    color: Colors.black26,
+                                    blurRadius: 4,
+                                    offset: Offset(0, 2),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            const SizedBox(height: 54),
+
+                            // Festive loading indicator
+                            Container(
+                              width: 48,
+                              height: 48,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                gradient: const LinearGradient(
+                                  colors: [
+                                    Color(0xFF00FFD0),
+                                    Color(0xFF0072FF)
+                                  ],
+                                  begin: Alignment.topLeft,
+                                  end: Alignment.bottomRight,
+                                ),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.cyanAccent.withOpacity(0.3),
+                                    blurRadius: 12,
+                                    spreadRadius: 2,
+                                  ),
+                                ],
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(4.0),
+                                child: CircularProgressIndicator(
+                                  valueColor: AlwaysStoppedAnimation<Color>(
+                                    Colors.white.withOpacity(0.9),
+                                  ),
+                                  strokeWidth: 4,
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
-                  ),
-                );
-              },
-            ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ],
           ),
         ),
       ),

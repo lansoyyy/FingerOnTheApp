@@ -311,107 +311,174 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
                 // Main content
                 Column(
                   children: [
-                    // Prize pool bar
+                    // Prize pool bar (highlighted)
                     SafeArea(
                       child: Container(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 20, vertical: 15),
+                            horizontal: 16, vertical: 18),
                         decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.1),
+                          gradient: const LinearGradient(
+                            colors: [Color(0xFFFFD700), Color(0xFFFFA500)],
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                          ),
+                          borderRadius: BorderRadius.circular(16),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.yellow.withOpacity(0.4),
+                              blurRadius: 18,
+                              spreadRadius: 2,
+                              offset: const Offset(0, 4),
+                            ),
+                          ],
                           border: Border.all(
-                            color: Colors.white.withOpacity(0.3),
-                            width: 1,
+                            color: Colors.white.withOpacity(0.7),
+                            width: 2,
                           ),
                         ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(
-                              'CURRENT PRIZE POOL',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                                fontFamily: 'Bold',
-                              ),
+                            Row(
+                              children: [
+                                Icon(Icons.emoji_events,
+                                    color: Colors.white, size: 24),
+                                const SizedBox(width: 8),
+                                const Text(
+                                  'PRIZE POOL',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: 'Bold',
+                                    letterSpacing: 1.2,
+                                    shadows: [
+                                      Shadow(
+                                        color: Colors.black26,
+                                        blurRadius: 6,
+                                        offset: Offset(0, 2),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
                             ),
-                            Text(
-                              'P24,980.29',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                fontFamily: 'Bold',
+                            ShaderMask(
+                              shaderCallback: (Rect bounds) {
+                                return const LinearGradient(
+                                  colors: [Colors.white, Colors.yellowAccent],
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                ).createShader(bounds);
+                              },
+                              child: const Text(
+                                'P24,980.29',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'Bold',
+                                  letterSpacing: 1.5,
+                                  shadows: [
+                                    Shadow(
+                                      color: Colors.black38,
+                                      blurRadius: 8,
+                                      offset: Offset(0, 3),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ],
                         ),
                       ),
                     ),
-                    Divider(
-                      color: Colors.white,
-                    ),
-                    // Time and Players bar
+                    const SizedBox(height: 8),
+                    // Time and Players bar (highlighted)
                     Container(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 15),
+                          horizontal: 16, vertical: 18),
                       decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.1),
+                        gradient: const LinearGradient(
+                          colors: [Color(0xFF00C6FF), Color(0xFF0072FF)],
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                        ),
+                        borderRadius: BorderRadius.circular(16),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.blueAccent.withOpacity(0.3),
+                            blurRadius: 18,
+                            spreadRadius: 2,
+                            offset: const Offset(0, 4),
+                          ),
+                        ],
                         border: Border.all(
-                          color: Colors.white.withOpacity(0.3),
-                          width: 1,
+                          color: Colors.white.withOpacity(0.7),
+                          width: 2,
                         ),
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           // Left side - Time
-                          Column(
+                          Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                'TIME ELAPSED',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'Bold',
-                                ),
-                              ),
-                              const SizedBox(height: 5),
-                              Text(
-                                _formatTimeDetailed(_elapsedSeconds),
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'Bold',
-                                ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const Text(
+                                    'TIME ELAPSED',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.bold,
+                                      fontFamily: 'Bold',
+                                    ),
+                                  ),
+                                  const SizedBox(height: 5),
+                                  Text(
+                                    _formatTimeDetailed(_elapsedSeconds),
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                      fontFamily: 'Bold',
+                                    ),
+                                  ),
+                                ],
                               ),
                             ],
                           ),
                           // Right side - Players
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.end,
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                'PLAYERS REMAINING',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'Bold',
-                                ),
-                              ),
-                              const SizedBox(height: 5),
-                              Text(
-                                '${_participantsRemaining.toStringAsFixed(0)}',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'Bold',
-                                ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [
+                                  const Text(
+                                    'PLAYERS LEFT',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.bold,
+                                      fontFamily: 'Bold',
+                                    ),
+                                  ),
+                                  const SizedBox(height: 5),
+                                  Text(
+                                    '${_participantsRemaining.toStringAsFixed(0)}',
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                      fontFamily: 'Bold',
+                                    ),
+                                  ),
+                                ],
                               ),
                             ],
                           ),

@@ -80,6 +80,26 @@ class _GetStartedScreenState extends State<GetStartedScreen>
               size: Size.infinite,
             ),
 
+            // Decorative confetti/stars
+            Positioned(
+              top: 60,
+              left: 30,
+              child: Icon(Icons.star,
+                  color: Colors.yellowAccent.withOpacity(0.22), size: 36),
+            ),
+            Positioned(
+              top: 120,
+              right: 40,
+              child: Icon(Icons.celebration,
+                  color: Colors.purpleAccent.withOpacity(0.16), size: 40),
+            ),
+            Positioned(
+              bottom: 120,
+              left: 60,
+              child: Icon(Icons.auto_awesome,
+                  color: Colors.cyanAccent.withOpacity(0.16), size: 48),
+            ),
+
             SafeArea(
               child: SingleChildScrollView(
                 child: AnimatedBuilder(
@@ -93,38 +113,54 @@ class _GetStartedScreenState extends State<GetStartedScreen>
                           children: [
                             const SizedBox(height: 40),
 
-                            // Game Icon
+                            // Game Icon with glow
                             Container(
-                              width: 120,
-                              height: 120,
+                              width: 130,
+                              height: 130,
                               decoration: BoxDecoration(
-                                color: Colors.white.withOpacity(0.2),
                                 shape: BoxShape.circle,
-                                border: Border.all(
-                                  color: Colors.white.withOpacity(0.5),
-                                  width: 3,
+                                gradient: const RadialGradient(
+                                  colors: [
+                                    Color(0xFF00FFD0),
+                                    Color(0xFF0F3460)
+                                  ],
+                                  center: Alignment.center,
+                                  radius: 0.8,
                                 ),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Colors.black.withOpacity(0.3),
-                                    blurRadius: 20,
-                                    offset: const Offset(0, 10),
+                                    color: Colors.cyanAccent.withOpacity(0.5),
+                                    blurRadius: 30,
+                                    spreadRadius: 8,
                                   ),
                                 ],
+                                border: Border.all(
+                                  color: Colors.white.withOpacity(0.7),
+                                  width: 4,
+                                ),
                               ),
-                              child: const Icon(
-                                Icons.phone_android,
-                                size: 60,
-                                color: Colors.white,
+                              child: const Center(
+                                child: Icon(
+                                  Icons.phone_android,
+                                  size: 70,
+                                  color: Colors.white,
+                                  shadows: [
+                                    Shadow(
+                                      color: Colors.cyanAccent,
+                                      blurRadius: 18,
+                                      offset: Offset(0, 0),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
-                            const SizedBox(height: 20),
+                            const SizedBox(height: 22),
 
-                            // Game Title
+                            // Game Title with badge
                             const Text(
                               'THE GAME',
                               style: TextStyle(
-                                fontSize: 32,
+                                fontSize: 34,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white,
                                 fontFamily: 'Bold',
@@ -132,13 +168,13 @@ class _GetStartedScreenState extends State<GetStartedScreen>
                                 shadows: [
                                   Shadow(
                                     color: Colors.black26,
-                                    blurRadius: 2,
-                                    offset: Offset(1, 1),
+                                    blurRadius: 6,
+                                    offset: Offset(1, 2),
                                   ),
                                 ],
                               ),
                             ),
-                            const SizedBox(height: 40),
+                            const SizedBox(height: 38),
 
                             // Game Description
                             Container(
@@ -152,6 +188,14 @@ class _GetStartedScreenState extends State<GetStartedScreen>
                                   color: Colors.white.withOpacity(0.3),
                                   width: 2,
                                 ),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color:
+                                        Colors.yellowAccent.withOpacity(0.08),
+                                    blurRadius: 12,
+                                    offset: const Offset(0, 4),
+                                  ),
+                                ],
                               ),
                               child: const Text(
                                 'This is a one-time game where whoever can hold their finger on the app the longest wins up to P25k.',
@@ -164,7 +208,7 @@ class _GetStartedScreenState extends State<GetStartedScreen>
                                 textAlign: TextAlign.center,
                               ),
                             ),
-                            const SizedBox(height: 40),
+                            const SizedBox(height: 38),
 
                             // Game Mechanics
                             Container(
@@ -178,6 +222,13 @@ class _GetStartedScreenState extends State<GetStartedScreen>
                                   color: Colors.white.withOpacity(0.3),
                                   width: 2,
                                 ),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.blueAccent.withOpacity(0.08),
+                                    blurRadius: 12,
+                                    offset: const Offset(0, 4),
+                                  ),
+                                ],
                               ),
                               child: Column(
                                 children: [
@@ -212,41 +263,68 @@ class _GetStartedScreenState extends State<GetStartedScreen>
                                 ],
                               ),
                             ),
-                            const SizedBox(height: 50),
+                            const SizedBox(height: 48),
 
-                            // Next Button
+                            // Next Button with glow and icon
                             GestureDetector(
                               onTap: _goToHome,
                               child: Container(
-                                width: 200,
-                                height: 60,
+                                width: 210,
+                                height: 62,
                                 margin: const EdgeInsets.only(bottom: 30),
                                 decoration: BoxDecoration(
-                                  color: Colors.white.withOpacity(0.2),
-                                  borderRadius: BorderRadius.circular(30),
+                                  gradient: const LinearGradient(
+                                    colors: [
+                                      Color(0xFF00FFD0),
+                                      Color(0xFF0072FF)
+                                    ],
+                                    begin: Alignment.topLeft,
+                                    end: Alignment.bottomRight,
+                                  ),
+                                  borderRadius: BorderRadius.circular(31),
                                   border: Border.all(
-                                    color: Colors.white.withOpacity(0.5),
+                                    color: Colors.white.withOpacity(0.7),
                                     width: 2,
                                   ),
                                   boxShadow: [
                                     BoxShadow(
-                                      color: Colors.black.withOpacity(0.3),
-                                      blurRadius: 15,
-                                      offset: const Offset(0, 8),
+                                      color: Colors.cyanAccent.withOpacity(0.4),
+                                      blurRadius: 18,
+                                      spreadRadius: 2,
+                                      offset: const Offset(0, 0),
+                                    ),
+                                    BoxShadow(
+                                      color: Colors.blue.withOpacity(0.2),
+                                      blurRadius: 30,
+                                      spreadRadius: 5,
+                                      offset: const Offset(0, 0),
                                     ),
                                   ],
                                 ),
-                                child: const Center(
-                                  child: Text(
-                                    'NEXT',
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
-                                      fontFamily: 'Bold',
-                                      letterSpacing: 2,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Icon(Icons.arrow_forward,
+                                        color: Colors.white, size: 26),
+                                    const SizedBox(width: 10),
+                                    const Text(
+                                      'NEXT',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 22,
+                                        fontWeight: FontWeight.bold,
+                                        fontFamily: 'Bold',
+                                        letterSpacing: 2,
+                                        shadows: [
+                                          Shadow(
+                                            color: Colors.black54,
+                                            blurRadius: 8,
+                                            offset: Offset(0, 3),
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                  ),
+                                  ],
                                 ),
                               ),
                             ),

@@ -40,83 +40,182 @@ class GameOverScreen extends StatelessWidget {
         child: SafeArea(
           child: Column(
             children: [
-              // Header with current game stats
-              Container(
-                padding: const EdgeInsets.all(20),
-                child: Column(
+              // Header with highlighted stats
+              Padding(
+                padding: const EdgeInsets.all(10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    // Prize Pool
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 15),
-                      decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.1),
-                        borderRadius: BorderRadius.circular(10),
-                        border: Border.all(
-                          color: Colors.white.withOpacity(0.3),
-                          width: 1,
+                    // Prize Pool Highlighted
+                    Expanded(
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 16, vertical: 18),
+                        decoration: BoxDecoration(
+                          gradient: const LinearGradient(
+                            colors: [Color(0xFFFFD700), Color(0xFFFFA500)],
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                          ),
+                          borderRadius: BorderRadius.circular(16),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.yellow.withOpacity(0.5),
+                              blurRadius: 24,
+                              spreadRadius: 2,
+                              offset: const Offset(0, 6),
+                            ),
+                          ],
+                          border: Border.all(
+                            color: Colors.white.withOpacity(0.7),
+                            width: 2,
+                          ),
                         ),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const Text(
-                            'CURRENT PRIZE POOL',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'Bold',
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(Icons.emoji_events,
+                                    color: Colors.white, size: 28),
+                                const SizedBox(width: 8),
+                                const Text(
+                                  'PRIZE POOL',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: 'Bold',
+                                    letterSpacing: 1.2,
+                                    shadows: [
+                                      Shadow(
+                                        color: Colors.black26,
+                                        blurRadius: 6,
+                                        offset: Offset(0, 2),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
                             ),
-                          ),
-                          const Text(
-                            'P24,980.29',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'Bold',
+                            const SizedBox(height: 6),
+                            ShaderMask(
+                              shaderCallback: (Rect bounds) {
+                                return const LinearGradient(
+                                  colors: [Colors.white, Colors.yellowAccent],
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                ).createShader(bounds);
+                              },
+                              child: const Text(
+                                'P24,980',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 28,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'Bold',
+                                  letterSpacing: 1.5,
+                                  shadows: [
+                                    Shadow(
+                                      color: Colors.black38,
+                                      blurRadius: 8,
+                                      offset: Offset(0, 3),
+                                    ),
+                                  ],
+                                ),
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
-                    const SizedBox(height: 10),
-
-                    // Players Remaining
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 15),
-                      decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.1),
-                        borderRadius: BorderRadius.circular(10),
-                        border: Border.all(
-                          color: Colors.white.withOpacity(0.3),
-                          width: 1,
+                    const SizedBox(width: 18),
+                    // Players Remaining Highlighted
+                    Expanded(
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 16, vertical: 18),
+                        decoration: BoxDecoration(
+                          gradient: const LinearGradient(
+                            colors: [Color(0xFF00C6FF), Color(0xFF0072FF)],
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                          ),
+                          borderRadius: BorderRadius.circular(16),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.blueAccent.withOpacity(0.4),
+                              blurRadius: 24,
+                              spreadRadius: 2,
+                              offset: const Offset(0, 6),
+                            ),
+                          ],
+                          border: Border.all(
+                            color: Colors.white.withOpacity(0.7),
+                            width: 2,
+                          ),
                         ),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const Text(
-                            'PLAYERS REMAINING',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'Bold',
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(Icons.people,
+                                    color: Colors.white, size: 28),
+                                const SizedBox(width: 8),
+                                const Text(
+                                  'PLAYERS LEFT',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: 'Bold',
+                                    letterSpacing: 1.2,
+                                    shadows: [
+                                      Shadow(
+                                        color: Colors.black26,
+                                        blurRadius: 6,
+                                        offset: Offset(0, 2),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
                             ),
-                          ),
-                          const Text(
-                            '201,011',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'Bold',
+                            const SizedBox(height: 6),
+                            Container(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 10, vertical: 4),
+                              decoration: BoxDecoration(
+                                color: Colors.white.withOpacity(0.15),
+                                borderRadius: BorderRadius.circular(8),
+                                border: Border.all(
+                                  color: Colors.white.withOpacity(0.3),
+                                  width: 1,
+                                ),
+                              ),
+                              child: const Text(
+                                '201,011',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'Bold',
+                                  letterSpacing: 1.2,
+                                  shadows: [
+                                    Shadow(
+                                      color: Colors.black38,
+                                      blurRadius: 8,
+                                      offset: Offset(0, 3),
+                                    ),
+                                  ],
+                                ),
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ],
@@ -129,22 +228,42 @@ class GameOverScreen extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      // Encouraging Icon
+                      // Encouraging Icon with glow
                       Container(
-                        width: 120,
-                        height: 120,
+                        width: 130,
+                        height: 130,
                         decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.2),
                           shape: BoxShape.circle,
+                          gradient: const RadialGradient(
+                            colors: [Color(0xFF00FFD0), Color(0xFF0F3460)],
+                            center: Alignment.center,
+                            radius: 0.8,
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.cyanAccent.withOpacity(0.5),
+                              blurRadius: 30,
+                              spreadRadius: 8,
+                            ),
+                          ],
                           border: Border.all(
-                            color: Colors.white.withOpacity(0.5),
-                            width: 3,
+                            color: Colors.white.withOpacity(0.7),
+                            width: 4,
                           ),
                         ),
-                        child: const Icon(
-                          Icons.thumb_up,
-                          size: 60,
-                          color: Colors.white,
+                        child: const Center(
+                          child: Icon(
+                            Icons.thumb_up,
+                            size: 70,
+                            color: Colors.white,
+                            shadows: [
+                              Shadow(
+                                color: Colors.cyanAccent,
+                                blurRadius: 18,
+                                offset: Offset(0, 0),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                       const SizedBox(height: 30),
@@ -153,10 +272,17 @@ class GameOverScreen extends StatelessWidget {
                       const Text(
                         'YOU ALMOST GOT IT!',
                         style: TextStyle(
-                          fontSize: 28,
+                          fontSize: 30,
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
                           fontFamily: 'Bold',
+                          shadows: [
+                            Shadow(
+                              color: Colors.black26,
+                              blurRadius: 10,
+                              offset: Offset(0, 5),
+                            ),
+                          ],
                         ),
                         textAlign: TextAlign.center,
                       ),
@@ -165,9 +291,16 @@ class GameOverScreen extends StatelessWidget {
                       const Text(
                         'Great effort! You were so close!',
                         style: TextStyle(
-                          fontSize: 16,
+                          fontSize: 18,
                           color: Colors.white70,
                           fontFamily: 'Medium',
+                          shadows: [
+                            Shadow(
+                              color: Colors.black26,
+                              blurRadius: 4,
+                              offset: Offset(0, 2),
+                            ),
+                          ],
                         ),
                         textAlign: TextAlign.center,
                       ),
@@ -186,13 +319,20 @@ class GameOverScreen extends StatelessWidget {
                             color: Colors.white.withOpacity(0.3),
                             width: 2,
                           ),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.yellowAccent.withOpacity(0.08),
+                              blurRadius: 12,
+                              offset: const Offset(0, 4),
+                            ),
+                          ],
                         ),
                         child: Column(
                           children: [
                             const Text(
                               'You lasted:',
                               style: TextStyle(
-                                fontSize: 18,
+                                fontSize: 20,
                                 color: Colors.white70,
                                 fontFamily: 'Medium',
                               ),
@@ -201,10 +341,17 @@ class GameOverScreen extends StatelessWidget {
                             Text(
                               _formatTimeDetailed(timeElapsed),
                               style: const TextStyle(
-                                fontSize: 32,
+                                fontSize: 36,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white,
                                 fontFamily: 'Bold',
+                                shadows: [
+                                  Shadow(
+                                    color: Colors.black38,
+                                    blurRadius: 8,
+                                    offset: Offset(0, 3),
+                                  ),
+                                ],
                               ),
                             ),
                           ],
@@ -212,7 +359,7 @@ class GameOverScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 50),
 
-                      // Home Button
+                      // Home Button with glow and icon
                       GestureDetector(
                         onTap: () {
                           Navigator.pushAndRemoveUntil(
@@ -224,33 +371,57 @@ class GameOverScreen extends StatelessWidget {
                           );
                         },
                         child: Container(
-                          width: 200,
-                          height: 60,
+                          width: 210,
+                          height: 62,
                           decoration: BoxDecoration(
-                            color: Colors.white.withOpacity(0.2),
-                            borderRadius: BorderRadius.circular(30),
+                            gradient: const LinearGradient(
+                              colors: [Color(0xFF00FFD0), Color(0xFF0072FF)],
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                            ),
+                            borderRadius: BorderRadius.circular(31),
                             border: Border.all(
-                              color: Colors.white.withOpacity(0.5),
+                              color: Colors.white.withOpacity(0.7),
                               width: 2,
                             ),
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.black.withOpacity(0.3),
-                                blurRadius: 15,
-                                offset: const Offset(0, 10),
+                                color: Colors.cyanAccent.withOpacity(0.4),
+                                blurRadius: 18,
+                                spreadRadius: 2,
+                                offset: const Offset(0, 0),
+                              ),
+                              BoxShadow(
+                                color: Colors.blue.withOpacity(0.2),
+                                blurRadius: 30,
+                                spreadRadius: 5,
+                                offset: const Offset(0, 0),
                               ),
                             ],
                           ),
-                          child: const Center(
-                            child: Text(
-                              'BACK TO HOME',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                                fontFamily: 'Bold',
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(Icons.home, color: Colors.white, size: 26),
+                              const SizedBox(width: 10),
+                              const Text(
+                                'BACK TO HOME',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'Bold',
+                                  letterSpacing: 2,
+                                  shadows: [
+                                    Shadow(
+                                      color: Colors.black54,
+                                      blurRadius: 8,
+                                      offset: Offset(0, 3),
+                                    ),
+                                  ],
+                                ),
                               ),
-                            ),
+                            ],
                           ),
                         ),
                       ),
