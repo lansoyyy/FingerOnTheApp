@@ -93,6 +93,8 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
   bool _showGracePeriod = false;
   int _gracePeriodSeconds = 3;
   Timer? _gracePeriodTimer;
+  // Add a set to track active pointer IDs
+  final Set<int> _activePointerIds = {};
 
   @override
   void initState() {
@@ -490,6 +492,12 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
                     Expanded(
                       child: Listener(
                         onPointerDown: (PointerDownEvent event) {
+                          _activePointerIds.add(event.pointer);
+                          if (_activePointerIds.length > 1) {
+                            // More than one finger detected, game over
+                            _onFingerUp();
+                            return;
+                          }
                           print('Pointer down detected');
                           if (_showGracePeriod) {
                             print('Grace period active, starting game');
@@ -521,6 +529,11 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
                           }
                         },
                         onPointerMove: (PointerMoveEvent event) {
+                          if (_activePointerIds.length > 1) {
+                            // More than one finger detected, game over
+                            _onFingerUp();
+                            return;
+                          }
                           if (_showGracePeriod) {
                             // During grace period, just track finger position
                             setState(() {
@@ -548,14 +561,16 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
                             });
                           }
                         },
-                        onPointerUp: (_) {
+                        onPointerUp: (PointerUpEvent event) {
+                          _activePointerIds.remove(event.pointer);
                           setState(() {
                             _isFingerDown = false;
                             _showFingerIndicator = false;
                           });
                           _onFingerUp();
                         },
-                        onPointerCancel: (_) {
+                        onPointerCancel: (PointerCancelEvent event) {
+                          _activePointerIds.remove(event.pointer);
                           setState(() {
                             _isFingerDown = false;
                             _showFingerIndicator = false;

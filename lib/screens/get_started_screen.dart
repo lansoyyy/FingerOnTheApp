@@ -251,15 +251,17 @@ class _GetStartedScreenState extends State<GetStartedScreen>
                                   _buildMechanicItem(
                                       '4. Your finger must not touch the border of the box'),
                                   _buildMechanicItem(
-                                      '5. You have 3 seconds to place your finger'),
+                                      '5. Only one finger is allowed in the box at a time. If you use two or more fingers, you will be eliminated.'),
                                   _buildMechanicItem(
-                                      '6. If you don\'t place your finger in time, you\'re eliminated'),
+                                      '6. You have 3 seconds to place your finger'),
                                   _buildMechanicItem(
-                                      '7. Keep your finger on the screen'),
+                                      '7. If you don\'t place your finger in time, you\'re eliminated'),
                                   _buildMechanicItem(
-                                      '8. Don\'t lift your finger!'),
+                                      '8. Keep your finger on the screen'),
                                   _buildMechanicItem(
-                                      '9. Last the longest to win the prize'),
+                                      '9. Don\'t lift your finger!'),
+                                  _buildMechanicItem(
+                                      '10. Last the longest to win the prize'),
                                 ],
                               ),
                             ),
