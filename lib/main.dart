@@ -1,3 +1,4 @@
+import 'package:finger_on_the_app/screens/simulator_screen.dart';
 import 'package:flutter/material.dart';
 import 'screens/splash_screen.dart';
 
@@ -20,7 +21,7 @@ class FingerOnTheApp extends StatelessWidget {
         useMaterial3: true,
         fontFamily: 'Regular',
       ),
-      home: const SplashScreen(), // SplashScreen will navigate to LoginScreen
+      home: SplashScreen(), // SplashScreen will navigate to LoginScreen
       debugShowCheckedModeBanner: false,
     );
   }
